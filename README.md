@@ -48,3 +48,6 @@ Various strategies were implemented to handle class imbalance:
 
 ## Conclusion
 The project demonstrates the relative strengths of different anomaly detection approaches and highlights the importance of carefully handling imbalanced data when working with real-world anomaly detection problems.
+
+
+Stevan Le Stanc
