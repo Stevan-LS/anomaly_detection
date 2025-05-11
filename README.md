@@ -3,6 +3,32 @@
 ## Overview
 This project explores various anomaly detection techniques, implementing and comparing multiple approaches on different datasets. The work focuses on both unsupervised learning methods (Local Outlier Factor, Isolation Forest) and supervised classification techniques adapted for imbalanced datasets.
 
+## Table of Contents
+- [Installation](#installation)
+- [Datasets](#datasets)
+- [Methodology](#methodology)
+- [Usage](#usage)
+- [Results](#results)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/detection_anomalie.git
+cd detection_anomalie
+
+# Create and activate virtual environment (optional but recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
 ## Datasets
 The project analyzes three distinct datasets:
 - **Mouse Dataset**: A simple 2D dataset for initial exploration and visualization
@@ -27,6 +53,34 @@ Various strategies were implemented to handle class imbalance:
 - Balanced Random Forest
 - Combined approaches (RF+SMOTE, RF+Tomek Links, etc.)
 
+## Usage
+
+### Basic Example
+```python
+from anomaly_detection import AnomalyDetector
+
+# Initialize detector
+detector = AnomalyDetector(method='isolation_forest')
+
+# Fit and predict
+detector.fit(X_train)
+predictions = detector.predict(X_test)
+
+# Get anomaly scores
+scores = detector.score_samples(X_test)
+```
+
+### Advanced Usage
+```python
+# Using SMOTE for imbalanced data
+from anomaly_detection import BalancedAnomalyDetector
+
+detector = BalancedAnomalyDetector(
+    method='random_forest',
+    sampling_strategy='smote'
+)
+```
+
 ## Key Features
 - Data preprocessing pipeline including normalization and specialized encoding for categorical variables
 - Custom evaluation framework using precision-recall curves and F1 scores
@@ -40,14 +94,12 @@ Various strategies were implemented to handle class imbalance:
 - Comprehensive comparison between supervised and unsupervised approaches showing trade-offs in precision and recall
 
 ## Technologies Used
-- Python
+- Python 3.8+
 - pandas, numpy
 - scikit-learn
 - imbalanced-learn
 - matplotlib
+- seaborn (for enhanced visualizations)
 
-## Conclusion
-The project demonstrates the relative strengths of different anomaly detection approaches and highlights the importance of carefully handling imbalanced data when working with real-world anomaly detection problems.
-
-
+## Author
 Stevan Le Stanc
